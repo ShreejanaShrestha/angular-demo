@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+  <h2>{{name}}</h2>
+  <h4>Interface as datatype</h4>
+  <h6>Enum accessed: {{type}}</h6>
+  <ul *ngFor = "let ele of pElement">
+    <li>Atomic No.: {{ele.atnumber}}</li>
+    <li>Atomic Name: {{ele.atname}}</li>
+    <li>Symbol: {{ele.symbol}}</li>
+  </ul>
+  <br>
+  <h4>Interface by defining a class for the car object</h4>
+  <p>Price of the {{newCar.name}} is{{newCar.price}}</p>
+  <p>Price after discount {{discount}}</p>
+</div>
+ <app-spinner></app-spinner>
+

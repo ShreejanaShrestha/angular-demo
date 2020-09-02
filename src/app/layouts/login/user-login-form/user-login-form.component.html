@@ -1,0 +1,30 @@
+<!-- <p>user-login-form works!</p> -->
+
+<div class="card">
+    <div class="card-header">
+        <h3>{{name}}</h3>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="loginForm" class="form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="name" class="form-control" formControlName="username">
+                <div class="alert alert-danger" *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                    <div *ngIf="loginForm.get('username').errors.required">Username is required.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div class="alert alert-danger" *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                    <div *ngIf="loginForm.get('password').errors.required">Password is required.</div>
+                </div>
+            </div>
+            <div class="form-action">
+            <button class="btn btn-dark" (click)="login()">{{name}}</button>
+            </div>
+        </form>
+<!--        <p>Form Value: {{loginForm.value | json}}</p>-->
+<!--        <p>Form Status: {{loginForm.status}}</p>-->
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<!--<p>users works!</p>-->
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" routerLink="/user_info_add">Add New User +</button>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <ng-container *ngIf="!userData">
+        <app-spinner></app-spinner>
+      </ng-container>
+      <div class="card mb-3" *ngFor="let userdata of userData">
+        <img class="card-img-top" src="{{userdata.picture}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{userdata.title}}. {{userdata.firstName}} {{userdata.lastName}}</h5>
+          <p class="card-text"><small class="text-muted">{{userdata.email}}</small></p>
+          <p class="card-text"><small class="text-muted">{{userdata.id}}</small></p>
+          <a class="card-link" (click)="getFullProfile(userdata.id)">Get full profile</a>
+          <a class="card-link" (click)="editUserInfo(userdata.id)">Update Info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
