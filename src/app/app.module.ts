@@ -20,6 +20,7 @@ import { UserProfileComponent } from './layouts/user-profile/user-profile.compon
 import {MainInterceptor} from './core/interceptors/http-interceptor/main.interceptor';
 import { AddUserComponent } from './layouts/users/add-user/add-user.component';
 import { UpdateUserComponent } from './layouts/users/update-user/update-user.component';
+import { PostComponent } from './layouts/post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { UpdateUserComponent } from './layouts/users/update-user/update-user.com
     UserProfileComponent,
     AddUserComponent,
     UpdateUserComponent,
+    PostComponent,
 
   ],
   imports: [
