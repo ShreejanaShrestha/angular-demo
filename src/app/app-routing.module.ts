@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserLoginFormComponent } from './layouts/login/user-login-form/user-login-form.component';
 import { ProjectComponent } from './layouts/project/project.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { LoginComponent } from './layouts/login/login.component';
@@ -12,6 +11,7 @@ import { AddUserComponent } from './layouts/users/add-user/add-user.component';
 import { UpdateUserComponent } from './layouts/users/update-user/update-user.component';
 
 const routes: Routes = [
+  { path: '', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'user', component: UsersComponent, canActivate: [AuthGuard] },

@@ -1,16 +1,48 @@
-<!-- <p>login works!</p> -->
-
-<div class="login-form-wrapper">
-    <div class="container">
+<div class="login-form-wrapper align-items-center d-flex flex-row">
+  <div class="container">
+    <div class="login-container">
+      <div class="row justify-content-center">
         <div class="row">
-            <div class="col">
+        <div class="col-md-12">
+          <div class="card login--card">
+            <div class="card-body">
+              <div class="logo-name text-center m-3">
+                <h3>Login</h3>
+              </div>
+              <form [formGroup]="loginForm" class="form">
                 <div class="row">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <app-user-login-form [name]="formType"></app-user-login-form>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="name" class="form-control" formControlName="username">
+                      <div class="alert alert-danger"
+                        *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                        <div *ngIf="loginForm.get('username').errors.required">Username is required.</div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" formControlName="password">
+                      <div class="alert alert-danger"
+                        *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                        <div *ngIf="loginForm.get('password').errors.required">Password is required.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-dark login-btn" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                    </div>
+                  </div>
                 </div>
-                
+              </form>
             </div>
+          </div>
         </div>
+      </div>
+      </div>
     </div>
+  </div>
 </div>

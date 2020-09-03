@@ -1,0 +1,12 @@
+.login-form-wrapper{
+    min-height: 100vh;
+    .login--card{
+        box-shadow: 0 0 10px rgba(0,0,0, 0.325);
+        padding: 1rem;
+        width: 30rem;
+    }
+    .login-btn{
+        width: 100%;
+        padding: 0.5rem;
+    }
+}

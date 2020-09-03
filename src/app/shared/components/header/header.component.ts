@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { AuthService } from 'src/app/_services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,19 +11,21 @@ export class HeaderComponent implements OnInit {
   user;
   profileName;
   constructor(
-    private authenticationService: AuthenticationService,
+    private authService: AuthService,
     private router: Router
   ) { }
   
   ngOnInit(): void {
-    this.user = this.authenticationService.currentUserValue;
+    this.user = this.authService.currentUserValue;
+    // debugger;
+
     console.log(this.user);
     if(this.user){
       this.profileName = this.user[0].username;
     }
   }
   logout(){
-    console.log(this.authenticationService.currentUserValue);
+    console.log(this.authService.currentUserValue);
     localStorage.removeItem(this.user[0].token);
     localStorage.clear();
     this.router.navigateByUrl('/login');

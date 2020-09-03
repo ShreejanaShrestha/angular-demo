@@ -3,7 +3,7 @@ import {CategoriesService} from '../../shared/services/categories.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })

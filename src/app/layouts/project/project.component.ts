@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Element } from '../../core/enums/element.enum';
 import { Itest } from '../../core/interface/itest';
 import { Car } from '../../core/interface/car';
-import { AuthenticationService } from '../../_services/authentication.service';
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-project',
@@ -43,7 +43,7 @@ pElement: Itest[] = [
 
 ];
 constructor(
-  private authenticationService: AuthenticationService,
+  private authenticationService: AuthService,
 
 ){}
 

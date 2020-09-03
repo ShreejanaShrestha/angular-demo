@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProjectComponent } from './layouts/project/project.component';
 import { LoginComponent } from './layouts/login/login.component';
-import { UserLoginFormComponent } from './layouts/login/user-login-form/user-login-form.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
@@ -26,7 +25,6 @@ import { PostComponent } from './layouts/post/post.component';
     AppComponent,
     ProjectComponent,
     LoginComponent,
-    UserLoginFormComponent,
     PageNotFoundComponent,
     SpinnerComponent,
     HeaderComponent,
