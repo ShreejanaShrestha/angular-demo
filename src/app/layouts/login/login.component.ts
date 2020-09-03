@@ -33,23 +33,11 @@ export class LoginComponent implements OnInit {
     });
   }
   login(){
-    this.validate = true;
-    this.loadSpinner = true;
     if (this.loginForm.invalid) {
       return;
     }
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
-    console.log(this.authService.login(username, password))
-    const user = this.authService.currentUserValue;
-
-    console.log(this.authService.currentUserValue)
-    // if token or uname and password present=> navigate to project
-    if (user && user[0].token){
-      localStorage.setItem('token', JSON.stringify(user[0].token));
-      this.router.navigateByUrl('user');
-      this.toastrservice.success('Logged in successfully!!!')
-      this.loadSpinner= false;
-      }
+    this.authService.login(username, password);
   }
 }

@@ -1,6 +1,4 @@
-<app-header></app-header>
 <div class="container">
-
   <div class="card" >
     <ng-container *ngIf="!fullProfile">
       <app-spinner></app-spinner>
@@ -9,7 +7,7 @@
       <img src="{{fullProfile?.picture}}" alt="">
     </div>
     <div class="card-body">
-      <p class="card-text"><small class="text-muted">{{fullProfile?.id}}</small></p>
+      <!-- <p class="card-text"><small class="text-muted">{{fullProfile?.id}}</small></p> -->
       <h4 class="card-title">{{fullProfile?.title}}.  {{fullProfile?.firstName}} {{fullProfile.lastName}}</h4>
       <h5 class="">Gender: {{fullProfile?.gender}}</h5>
       <h5 class="">Date of Birth: {{fullProfile?.dateOfBirth}}</h5>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,26 +11,24 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   user;
   profileName;
+  isLoggedIn$: Observable<boolean>;
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
   
   ngOnInit(): void {
-    this.user = this.authService.currentUserValue;
-    // debugger;
-
-    console.log(this.user);
-    if(this.user){
-      this.profileName = this.user[0].username;
+    this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isLoggedIn$.subscribe(console.log)
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+      this.profileName = user;
     }
   }
-  logout(){
-    console.log(this.authService.currentUserValue);
-    localStorage.removeItem(this.user[0].token);
-    localStorage.clear();
-    this.router.navigateByUrl('/login');
+  
+  logout() {
+    this.authService.logout();
+    this.isLoggedIn$.subscribe(console.log)
 
   }
-
 }
