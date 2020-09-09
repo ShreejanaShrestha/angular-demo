@@ -14,20 +14,25 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="username">Username</label>
-                      <input type="name" class="form-control" formControlName="username">
-                      <div class="alert alert-danger"
-                        *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
-                        <div *ngIf="loginForm.get('username').errors.required">Username is required.</div>
+                      <input type="email" class="form-control" formControlName="username" [class.is-invalid] = "f.username.invalid && f.username.touched" >
+                      <div *ngIf="(f.username.invalid && f.username.touched) || f.username.dirty">
+                        <small *ngIf="f.username.errors?.required" class="text-danger">Username is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="f.username.errors?.pattern" class="text-danger">Please provide a valid email address</small>
                       </div>
+<!--                      <div class="alert alert-danger"-->
+<!--                        *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">-->
+<!--                        <div *ngIf="loginForm.get('username').errors.required">Username is required.</div>-->
+<!--                      </div>-->
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" class="form-control" formControlName="password">
-                      <div class="alert alert-danger"
-                        *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-                        <div *ngIf="loginForm.get('password').errors.required">Password is required.</div>
+                      <input type="password" class="form-control" formControlName="password" [class.is-invalid]="f.password.invalid && f.password.touched">
+                      <div *ngIf="(f.password.invalid && f.password.touched) || f.password.dirty">
+                        <small *ngIf="f.password.errors?.required" class="text-danger">Password is required.</small>
+                        <small *ngIf="f.password.errors?.minlength" class="text-danger">Password must be atleast five characters</small>
                       </div>
                     </div>
                   </div>

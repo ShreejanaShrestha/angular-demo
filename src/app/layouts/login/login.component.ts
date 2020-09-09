@@ -14,9 +14,11 @@ export class LoginComponent implements OnInit {
   formType="Login";
   loadSpinner = false;
   validate = false;
+  // @ts-ignore
+  // @ts-ignore
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    username: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)] )
   });
 
   constructor(
@@ -28,11 +30,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoriesService.getUser().subscribe(data => {
-      console.log(data);
-    });
+
+  }
+  get f(){
+    return this.loginForm.controls;
   }
   login(){
+    this.validate = true;
     if (this.loginForm.invalid) {
       return;
     }

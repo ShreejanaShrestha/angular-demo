@@ -30,4 +30,8 @@ userData;
     this.router.navigateByUrl(`/user_info_update/${id}`);
 
   }
+  viewUserPost(id) {
+    this.router.navigateByUrl(`/user/${id}/post`);
+
+  }
 }

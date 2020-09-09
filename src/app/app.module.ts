@@ -20,6 +20,14 @@ import {MainInterceptor} from './core/interceptors/http-interceptor/main.interce
 import { AddUserComponent } from './layouts/users/add-user/add-user.component';
 import { UpdateUserComponent } from './layouts/users/update-user/update-user.component';
 import { PostComponent } from './layouts/post/post.component';
+import { DragAndDropComponent } from './layouts/drag-and-drop/drag-and-drop.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { UserPostComponent } from './layouts/users/user-post/user-post.component';
+import { SharePostComponent } from './layouts/share-post/share-post.component';
+import {NamePipe} from './core/pipe/name.pipe';
+import {CapitalizePipePipe} from './core/pipe/capitalize-pipe.pipe';
+import {LoaderInterceptor} from './core/interceptors/http-interceptor/loader.interceptor';
+import {SpinnerService} from './shared/services/spinner.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +41,11 @@ import { PostComponent } from './layouts/post/post.component';
     AddUserComponent,
     UpdateUserComponent,
     PostComponent,
-
+    DragAndDropComponent,
+    UserPostComponent,
+    SharePostComponent,
+    NamePipe,
+    CapitalizePipePipe,
   ],
   imports: [
     BrowserModule,
@@ -43,10 +55,13 @@ import { PostComponent } from './layouts/post/post.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgbModule
+    NgbModule,
+    DragDropModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true }
+    SpinnerService,
+    { provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card" >
+  <div class="card mt-5" >
     <ng-container *ngIf="!fullProfile">
       <app-spinner></app-spinner>
     </ng-container>
@@ -7,8 +7,7 @@
       <img src="{{fullProfile?.picture}}" alt="">
     </div>
     <div class="card-body">
-      <!-- <p class="card-text"><small class="text-muted">{{fullProfile?.id}}</small></p> -->
-      <h4 class="card-title">{{fullProfile?.title}}.  {{fullProfile?.firstName}} {{fullProfile.lastName}}</h4>
+      <h4 class="card-title">{{fullProfile?.title}}.  {{fullProfile?.firstName}} {{fullProfile?.lastName}}</h4>
       <h5 class="">Gender: {{fullProfile?.gender}}</h5>
       <h5 class="">Date of Birth: {{fullProfile?.dateOfBirth}}</h5>
       <h5 class="">Register Date: {{fullProfile?.registerDate}}</h5>
@@ -17,11 +16,11 @@
 
     </div>
     <div class="card-body">
-      <h4 class="">Location</h4>
-      <h5 class="">{{fullProfile?.location.city}}</h5>
-      <h5 class="">{{fullProfile?.location.country}}</h5>
-      <h5 class="">{{fullProfile?.location.state}}</h5>
-      <h5 class="">{{fullProfile?.location.street}}</h5>
+<!--      <h4 class="">Location</h4>-->
+      <h5 class="">City: {{fullProfile?.location?.city}}</h5>
+      <h5 class="">Country: {{fullProfile?.location?.country}}</h5>
+      <h5 class="">State: {{fullProfile?.location?.state}}</h5>
+      <h5 class="">Street: {{fullProfile?.location?.street}}</h5>
 
     </div>
   </div>

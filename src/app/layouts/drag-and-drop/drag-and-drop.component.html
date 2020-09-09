@@ -1,0 +1,34 @@
+<p>drag-and-drop works!</p>
+<div class="form-container">
+  <form [formGroup]="dragForm">
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <label >Phase Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-primary" (click)="addNew($event, dragForm.get('name').value)">Add</button>
+      </div>
+    </div>
+
+    <div *ngFor="let data of assignees.data; let i=index">
+      <label>
+        <input type="checkbox" [value]="data.owner" (change)="onCheckboxChange($event)" />
+        {{data.name}}
+      </label>
+    </div>
+  </form>
+
+</div>
+
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal">
+  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+</div>
+
+<div class="check-section border-top">
+
+</div>

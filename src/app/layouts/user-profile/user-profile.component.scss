@@ -5,4 +5,9 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  .card-img {
+    img {
+      border-radius: 50%;
+    }
+  }
 }

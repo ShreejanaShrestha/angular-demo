@@ -9,16 +9,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User[]>;
-  public currentUser: Observable<User[]>;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<User[]>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue():User[] {
+  public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
   get isLoggedIn() {
@@ -26,20 +26,20 @@ export class AuthService {
   }
 
   login(username:string, password:string){
-    const user = [{
+    const user = {
       username: username,
       password: password,
-      token: "5f4bd90da39b29444be4e09b"
-    }]
+      token: '5f4bd90da39b29444be4e09b'
+    };
     // if token (or uname and password) present=> navigate to project
-    // and setting username and token in local storage
-    if (user && user[0].token){
-      localStorage.setItem('token', JSON.stringify(user[0].token));
-      localStorage.setItem('user', JSON.stringify(user[0].username));
+    if (user && user.token){
+      console.log(user && user.token, 'oooooooooooo');
+      localStorage.setItem('token', JSON.stringify(user.token));
+      localStorage.setItem('user', JSON.stringify(user.username));
 
       this.loggedIn.next(true);
       this.currentUserSubject.next(user);
-      this.router.navigate(['/']);
+      this.router.navigate(['/user']);
       }
     // return user;
   }

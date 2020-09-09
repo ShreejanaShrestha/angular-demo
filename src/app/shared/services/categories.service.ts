@@ -12,7 +12,6 @@ export class CategoriesService {
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<any>{
-    console.log('Request is sent!');
     return this.http.get(`${this.baseURL}/user`);
   }
 
@@ -20,7 +19,14 @@ export class CategoriesService {
     return this.http.get(`${this.baseURL}/user/${id}`);
   }
 
-  getPost():Observable<any>{
+  getPost(): Observable<any>{
     return this.http.get(`${this.baseURL}/post`);
+  }
+
+  getComments(pid): Observable<any>{
+    return this.http.get(`${this.baseURL}/post/${pid}/comment`);
+  }
+  getAllPosts(id): Observable<any>{
+    return this.http.get(`${this.baseURL}/user/${id}/post`);
   }
 }

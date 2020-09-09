@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SpinnerService} from '../../services/spinner.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-spinner',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpinnerComponent implements OnInit {
 
-  constructor() { }
+  loading:boolean;
+  private loaderSubscriber: Subscription;
+
+  constructor(private loaderService: SpinnerService) {
+    this.loaderSubscriber = this.loaderService.isLoading.subscribe(v => {
+      console.log(v);
+      this.loading = v;
+    });
+  }
 
   ngOnInit(): void {
   }
